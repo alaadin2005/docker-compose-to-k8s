@@ -27,16 +27,3 @@ spec:
             secretKeyRef:
               name: vprofile-secret
               key: RABBITMQ_DEFAULT_PASS
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: rabbitmq
-  namespace: vprofile
-spec:
-  type: ClusterIP
-  selector:
-    app: rabbitmq
-  ports:
-  - port: 5672
-    targetPort: 5672
