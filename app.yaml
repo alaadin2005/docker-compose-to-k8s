@@ -24,3 +24,10 @@ spec:
             port: 8080
           initialDelaySeconds: 20
           periodSeconds: 10
+        volumeMounts:
+        - mountPath: /usr/local/tomcat/webapps
+          name: tomcat-storage
+      volumes:
+      - name: tomcat-storage
+        persistentVolumeClaim:
+          claimName: tomcat-pvc
