@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: mysql
   namespace: vprofile
 spec:
-  replicas: 1
+  serviceName: "mysql-service"
+  replicas: 3
   selector:
     matchLabels:
       app: mysql
