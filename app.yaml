@@ -18,7 +18,15 @@ spec:
         image: vprocontainers/vprofileapp
         ports:
         - containerPort: 8080
-        readinessProbe:
+        volumeMounts:
+        - mountPath: /usr/local/tomcat/webapps
+          name: tomcat-storage
+      
+      volumes:
+      - name: tomcat-storage
+        persistentVolumeClaim:
+          claimName: tomcat-pvc
+      readinessProbe:
           httpGet:
             path: /
             port: 8080
